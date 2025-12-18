@@ -1,0 +1,17 @@
+import numpy as np
+
+y = np.array([5, 8, 3])
+y_hat = np.array([5.7, 7.8, 3.4])
+delta = 0.5   # updated threshold
+
+error = y - y_hat
+
+loss = np.where(
+    np.abs(error) <= delta,
+    0.5 * error**2,
+    delta * np.abs(error) - 0.5 * delta**2
+)
+
+print("Errors:", error)
+print("Individual Huber losses:", loss)
+print("Mean Huber loss:", np.mean(loss))
